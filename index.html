@@ -1,15 +1,18 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Will They Block You?</title>
+
+<title>Will They Block You? 🎭</title>
 
 <style>
+
 *{
+  box-sizing:border-box;
   margin:0;
   padding:0;
-  box-sizing:border-box;
 }
 
 body{
@@ -20,330 +23,373 @@ body{
   justify-content:center;
   align-items:center;
   text-align:center;
-  overflow:hidden;
   background:
-    radial-gradient(circle at 20% 20%,#55106f 0%,transparent 35%),
-    radial-gradient(circle at 80% 80%,#8b123d 0%,transparent 35%),
-    #09030e;
+  radial-gradient(circle at 20% 20%,#59136f,transparent 35%),
+  radial-gradient(circle at 80% 80%,#8d1747,transparent 35%),
+  #08030d;
 }
 
 .container{
   width:92%;
-  max-width:460px;
+  max-width:500px;
   padding:25px;
 }
 
-.glow{
-  position:fixed;
-  width:250px;
-  height:250px;
-  border-radius:50%;
-  background:#ff1764;
-  filter:blur(130px);
-  opacity:.18;
-  animation:move 6s infinite alternate;
+.emoji{
+  font-size:65px;
+  animation:float 2s infinite;
 }
 
-@keyframes move{
-  from{transform:translate(-80px,-50px)}
-  to{transform:translate(100px,80px)}
-}
-
-.icon{
-  font-size:70px;
-  animation:bounce 2s infinite;
-}
-
-@keyframes bounce{
+@keyframes float{
   0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-12px)}
+  50%{transform:translateY(-10px)}
 }
 
 h1{
-  font-size:34px;
-  margin:18px 0;
+  font-size:32px;
+  margin:15px 0;
 }
 
-.highlight{
-  color:#ff477e;
+.pink{
+  color:#ff4c86;
 }
 
 .subtitle{
   color:#ddd;
-  font-size:18px;
   line-height:1.6;
-}
-
-.inputBox{
-  margin-top:25px;
-}
-
-input{
-  width:100%;
-  padding:16px;
-  border:none;
-  outline:none;
-  border-radius:14px;
-  background:rgba(255,255,255,.1);
-  color:white;
-  font-size:16px;
-  text-align:center;
-  border:1px solid rgba(255,255,255,.15);
-}
-
-input::placeholder{
-  color:#aaa;
-}
-
-button{
-  width:100%;
-  margin-top:15px;
-  padding:16px;
-  border:none;
-  border-radius:14px;
-  color:white;
   font-size:17px;
-  font-weight:bold;
-  cursor:pointer;
-  background:linear-gradient(135deg,#ff1764,#8e24aa);
-  box-shadow:0 0 25px rgba(255,23,100,.4);
-  transition:.3s;
 }
 
-button:hover{
-  transform:scale(1.03);
-}
-
-.loading{
-  display:none;
-  margin-top:25px;
-}
-
-.loader{
-  width:45px;
-  height:45px;
-  border:5px solid #333;
-  border-top:5px solid #ff477e;
-  border-radius:50%;
-  margin:auto;
-  animation:spin 1s linear infinite;
-}
-
-@keyframes spin{
-  to{transform:rotate(360deg)}
-}
-
+.start,
+.quiz,
 .result{
-  display:none;
   margin-top:25px;
-  padding:25px 18px;
+  padding:25px 20px;
   border-radius:22px;
   background:rgba(255,255,255,.08);
   border:1px solid rgba(255,255,255,.15);
   backdrop-filter:blur(12px);
-  animation:appear .7s ease;
 }
 
-@keyframes appear{
-  from{
-    opacity:0;
-    transform:scale(.7);
-  }
-  to{
-    opacity:1;
-    transform:scale(1);
-  }
+input{
+  width:100%;
+  padding:15px;
+  border:none;
+  outline:none;
+  border-radius:12px;
+  margin-bottom:15px;
+  text-align:center;
+  font-size:16px;
+}
+
+button{
+  width:100%;
+  padding:15px;
+  border:none;
+  border-radius:12px;
+  color:white;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+  background:linear-gradient(135deg,#ff1764,#8e24aa);
+  margin-top:10px;
+}
+
+button:hover{
+  transform:scale(1.02);
+}
+
+.quiz,
+.result{
+  display:none;
+}
+
+.questionNumber{
+  color:#ff5a91;
+  font-size:14px;
+  margin-bottom:12px;
+}
+
+.question{
+  font-size:22px;
+  line-height:1.4;
+  margin-bottom:20px;
+}
+
+.option{
+  background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.15);
+  margin:10px 0;
+  padding:14px;
+  border-radius:12px;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.option:hover{
+  background:rgba(255,71,126,.25);
+  transform:scale(1.02);
+}
+
+.option.selected{
+  background:#ff1764;
+  border-color:#ff6b9a;
+}
+
+#nextBtn{
+  display:none;
+}
+
+.progress{
+  width:100%;
+  height:7px;
+  background:#29202d;
+  border-radius:10px;
+  margin-bottom:20px;
+  overflow:hidden;
+}
+
+.progressBar{
+  height:100%;
+  width:10%;
+  background:#ff3978;
+  transition:.4s;
 }
 
 .resultEmoji{
-  font-size:65px;
+  font-size:70px;
   margin-bottom:15px;
 }
 
 .result h2{
+  color:#ff4d87;
   font-size:28px;
-  color:#ff477e;
+  margin-bottom:15px;
 }
 
 .result p{
-  margin-top:15px;
   color:#ddd;
+  line-height:1.7;
   font-size:17px;
-  line-height:1.6;
 }
 
 .share{
-  background:linear-gradient(135deg,#16c784,#087f5b);
+  background:linear-gradient(135deg,#13b878,#087d59);
 }
 
-.reset{
+.retry{
   background:rgba(255,255,255,.12);
-  box-shadow:none;
 }
 
 .footer{
-  margin-top:25px;
+  margin-top:20px;
   color:#777;
   font-size:12px;
 }
+
 </style>
 </head>
 
 <body>
 
-<div class="glow"></div>
-
 <div class="container">
 
-  <div class="icon">🎭</div>
+<div class="emoji">🎭</div>
 
-  <h1>
-    Someone is <span class="highlight">blocking</span> 🚫📱
-  </h1>
+<h1>
+Will They <span class="pink">Block</span> You? 🚫📱
+</h1>
 
-  <p class="subtitle">
-    their <b>fake friends</b>...
-    <br><br>
-    Will they <b>block YOU</b> as well?
-    <br>
-    Let's see 👇
-  </p>
+<p class="subtitle">
+Answer these 10 questions and discover your result 👀
+<br>
+Let's see what happens 👇
+</p>
 
-  <div class="inputBox" id="startBox">
+<!-- START -->
 
-    <input
-      type="text"
-      id="name"
-      placeholder="Enter your name"
-      maxlength="30"
-    >
+<div class="start" id="start">
 
-    <button onclick="startTest()">
-      🔍 Check My Result
-    </button>
+<input
+type="text"
+id="name"
+placeholder="Enter your name"
+maxlength="30"
+>
 
-  </div>
-
-  <div class="loading" id="loading">
-
-    <div class="loader"></div>
-
-    <p style="margin-top:15px;">
-      Analyzing your friendship... 👀
-    </p>
-
-  </div>
-
-  <div class="result" id="result">
-
-    <div class="resultEmoji" id="emoji">
-      😌💚
-    </div>
-
-    <h2 id="title">
-      RESULT
-    </h2>
-
-    <p id="message"></p>
-
-    <button class="share" onclick="shareResult()">
-      🔗 Share With Friends
-    </button>
-
-    <button class="reset" onclick="location.reload()">
-      🔄 Try Again
-    </button>
-
-  </div>
-
-  <div class="footer">
-    Just for fun 😄
-  </div>
+<button onclick="startQuiz()">
+🚀 Start Quiz
+</button>
 
 </div>
 
+
+<!-- QUIZ -->
+
+<div class="quiz" id="quiz">
+
+<div class="progress">
+<div class="progressBar" id="progressBar"></div>
+</div>
+
+<div class="questionNumber" id="questionNumber">
+Question 1 of 10
+</div>
+
+<div class="question" id="question">
+Question
+</div>
+
+<div id="options"></div>
+
+<button id="nextBtn" onclick="nextQuestion()">
+Next ➜
+</button>
+
+</div>
+
+
+<!-- RESULT -->
+
+<div class="result" id="result">
+
+<div class="resultEmoji" id="resultEmoji">
+🎉
+</div>
+
+<h2 id="resultTitle">
+Your Result
+</h2>
+
+<p id="resultText">
+Result
+</p>
+
+<button class="share" onclick="shareResult()">
+🔗 Share My Result
+</button>
+
+<button class="retry" onclick="location.reload()">
+🔄 Try Again
+</button>
+
+</div>
+
+<div class="footer">
+Just for fun 😄
+</div>
+
+</div>
+
+
 <script>
 
-function startTest(){
+const questions = [
 
-  const name = document.getElementById("name").value.trim();
+{
+q:"If your friend takes a long time to reply what do you do?",
+options:[
+"Wait patiently 😌",
+"Send another message 😂",
+"Call them 📞",
+"Ignore them too 😎"
+]
+},
 
-  if(name === ""){
-    alert("Please enter your name 👀");
-    return;
-  }
+{
+q:"How often do you check if your friend is online?",
+options:[
+"Never",
+"Sometimes 👀",
+"Quite often",
+"Every few minutes 😂"
+]
+},
 
-  document.getElementById("startBox").style.display="none";
-  document.getElementById("loading").style.display="block";
+{
+q:"Your friend cancels your plan. What do you do?",
+options:[
+"Understand them",
+"Ask why",
+"Get a little angry 😤",
+"Block them first 😂"
+]
+},
 
-  setTimeout(function(){
+{
+q:"If your friend posts with someone else, you feel...",
+options:[
+"Happy for them ❤️",
+"Nothing",
+"A little jealous 👀",
+"Very jealous 😂"
+]
+},
 
-    document.getElementById("loading").style.display="none";
-    document.getElementById("result").style.display="block";
+{
+q:"Who usually starts your conversations?",
+options:[
+"Mostly me",
+"Mostly them",
+"Both equally",
+"Depends on the day"
+]
+},
 
-    const random = Math.random();
+{
+q:"Your friend leaves you on seen. What is your reaction?",
+options:[
+"No problem",
+"Wait for their reply",
+"Ask why",
+"Mission BLOCK starts 🚫📱"
+]
+},
 
-    if(random < 0.65){
+{
+q:"How important is friendship to you?",
+options:[
+"Very important ❤️",
+"Important",
+"Somewhat important",
+"Depends on the person"
+]
+},
 
-      document.getElementById("emoji").innerHTML="😌💚";
+{
+q:"If your friend tells you a secret, what do you do?",
+options:[
+"Keep it private 🤐",
+"Tell my best friend",
+"Maybe tell someone",
+"Everyone will know 😂"
+]
+},
 
-      document.getElementById("title").innerHTML=
-      "YOU ARE SAFE! 🎉";
+{
+q:"If you have an argument with your friend, what happens?",
+options:[
+"We talk and solve it",
+"We need some time",
+"We argue more",
+"I say BLOCKED 🚫"
+]
+},
 
-      document.getElementById("message").innerHTML=
-      "<b>"+name+"</b>, relax 😌<br><br>"+
-      "Looks like you are NOT getting blocked! 💚<br><br>"+
-      "Your friendship survived the test 👀✨";
-
-    }else{
-
-      document.getElementById("emoji").innerHTML="🚨😭";
-
-      document.getElementById("title").innerHTML=
-      "OOPS! 😭";
-
-      document.getElementById("message").innerHTML=
-      "<b>"+name+"</b>, we found something suspicious 👀<br><br>"+
-      "You might be on the BLOCK LIST 🚫📱<br><br>"+
-      "Better behave before it's too late 😂";
-
-    }
-
-  },3000);
+{
+q:"Finally, would you block your friend if they annoyed you?",
+options:[
+"Never ❤️",
+"Maybe",
+"Probably",
+"Absolutely 😂"
+]
 }
 
-function shareResult(){
+];
 
-  const name=document.getElementById("name").value;
-
-  const text=
-  "👀 "+name+
-  " just checked their blocking status! 🚫📱"+
-  "\n\nWill YOU get blocked too?"+
-  "\n👇 Check your result:";
-
-  const shareData={
-    title:"Will They Block You? 🎭",
-    text:text,
-    url:window.location.href
-  };
-
-  if(navigator.share){
-
-    navigator.share(shareData);
-
-  }else{
-
-    navigator.clipboard.writeText(
-      text+"\n"+window.location.href
-    );
-
-    alert("Challenge link copied! 🔗");
-
-  }
-}
-
-</script>
-
-</body>
-</html>
+let currentQuestion = 0;
+let score = 0;
+let selected = false;
+let userName
+```
