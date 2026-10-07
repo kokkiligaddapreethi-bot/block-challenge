@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Will They Block You?</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  min-height:100vh;
+  font-family:Arial,sans-serif;
+  color:white;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 20% 20%,#55106f 0%,transparent 35%),
+    radial-gradient(circle at 80% 80%,#8b123d 0%,transparent 35%),
+    #09030e;
+}
+
+.container{
+  width:92%;
+  max-width:460px;
+  padding:25px;
+}
+
+.glow{
+  position:fixed;
+  width:250px;
+  height:250px;
+  border-radius:50%;
+  background:#ff1764;
+  filter:blur(130px);
+  opacity:.18;
+  animation:move 6s infinite alternate;
+}
+
+@keyframes move{
+  from{transform:translate(-80px,-50px)}
+  to{transform:translate(100px,80px)}
+}
+
+.icon{
+  font-size:70px;
+  animation:bounce 2s infinite;
+}
+
+@keyframes bounce{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-12px)}
+}
+
+h1{
+  font-size:34px;
+  margin:18px 0;
+}
+
+.highlight{
+  color:#ff477e;
+}
+
+.subtitle{
+  color:#ddd;
+  font-size:18px;
+  line-height:1.6;
+}
+
+.inputBox{
+  margin-top:25px;
+}
+
+input{
+  width:100%;
+  padding:16px;
+  border:none;
+  outline:none;
+  border-radius:14px;
+  background:rgba(255,255,255,.1);
+  color:white;
+  font-size:16px;
+  text-align:center;
+  border:1px solid rgba(255,255,255,.15);
+}
+
+input::placeholder{
+  color:#aaa;
+}
+
+button{
+  width:100%;
+  margin-top:15px;
+  padding:16px;
+  border:none;
+  border-radius:14px;
+  color:white;
+  font-size:17px;
+  font-weight:bold;
+  cursor:pointer;
+  background:linear-gradient(135deg,#ff1764,#8e24aa);
+  box-shadow:0 0 25px rgba(255,23,100,.4);
+  transition:.3s;
+}
+
+button:hover{
+  transform:scale(1.03);
+}
+
+.loading{
+  display:none;
+  margin-top:25px;
+}
+
+.loader{
+  width:45px;
+  height:45px;
+  border:5px solid #333;
+  border-top:5px solid #ff477e;
+  border-radius:50%;
+  margin:auto;
+  animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+  to{transform:rotate(360deg)}
+}
+
+.result{
+  display:none;
+  margin-top:25px;
+  padding:25px 18px;
+  border-radius:22px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.15);
+  backdrop-filter:blur(12px);
+  animation:appear .7s ease;
+}
+
+@keyframes appear{
+  from{
+    opacity:0;
+    transform:scale(.7);
+  }
+  to{
+    opacity:1;
+    transform:scale(1);
+  }
+}
+
+.resultEmoji{
+  font-size:65px;
+  margin-bottom:15px;
+}
+
+.result h2{
+  font-size:28px;
+  color:#ff477e;
+}
+
+.result p{
+  margin-top:15px;
+  color:#ddd;
+  font-size:17px;
+  line-height:1.6;
+}
+
+.share{
+  background:linear-gradient(135deg,#16c784,#087f5b);
+}
+
+.reset{
+  background:rgba(255,255,255,.12);
+  box-shadow:none;
+}
+
+.footer{
+  margin-top:25px;
+  color:#777;
+  font-size:12px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="glow"></div>
+
+<div class="container">
+
+  <div class="icon">🎭</div>
+
+  <h1>
+    Someone is <span class="highlight">blocking</span> 🚫📱
+  </h1>
+
+  <p class="subtitle">
+    their <b>fake friends</b>...
+    <br><br>
+    Will they <b>block YOU</b> as well?
+    <br>
+    Let's see 👇
+  </p>
+
+  <div class="inputBox" id="startBox">
+
+    <input
+      type="text"
+      id="name"
+      placeholder="Enter your name"
+      maxlength="30"
+    >
+
+    <button onclick="startTest()">
+      🔍 Check My Result
+    </button>
+
+  </div>
+
+  <div class="loading" id="loading">
+
+    <div class="loader"></div>
+
+    <p style="margin-top:15px;">
+      Analyzing your friendship... 👀
+    </p>
+
+  </div>
+
+  <div class="result" id="result">
+
+    <div class="resultEmoji" id="emoji">
+      😌💚
+    </div>
+
+    <h2 id="title">
+      RESULT
+    </h2>
+
+    <p id="message"></p>
+
+    <button class="share" onclick="shareResult()">
+      🔗 Share With Friends
+    </button>
+
+    <button class="reset" onclick="location.reload()">
+      🔄 Try Again
+    </button>
+
+  </div>
+
+  <div class="footer">
+    Just for fun 😄
+  </div>
+
+</div>
+
+<script>
+
+function startTest(){
+
+  const name = document.getElementById("name").value.trim();
+
+  if(name === ""){
+    alert("Please enter your name 👀");
+    return;
+  }
+
+  document.getElementById("startBox").style.display="none";
+  document.getElementById("loading").style.display="block";
+
+  setTimeout(function(){
+
+    document.getElementById("loading").style.display="none";
+    document.getElementById("result").style.display="block";
+
+    const random = Math.random();
+
+    if(random < 0.65){
+
+      document.getElementById("emoji").innerHTML="😌💚";
+
+      document.getElementById("title").innerHTML=
+      "YOU ARE SAFE! 🎉";
+
+      document.getElementById("message").innerHTML=
+      "<b>"+name+"</b>, relax 😌<br><br>"+
+      "Looks like you are NOT getting blocked! 💚<br><br>"+
+      "Your friendship survived the test 👀✨";
+
+    }else{
+
+      document.getElementById("emoji").innerHTML="🚨😭";
+
+      document.getElementById("title").innerHTML=
+      "OOPS! 😭";
+
+      document.getElementById("message").innerHTML=
+      "<b>"+name+"</b>, we found something suspicious 👀<br><br>"+
+      "You might be on the BLOCK LIST 🚫📱<br><br>"+
+      "Better behave before it's too late 😂";
+
+    }
+
+  },3000);
+}
+
+function shareResult(){
+
+  const name=document.getElementById("name").value;
+
+  const text=
+  "👀 "+name+
+  " just checked their blocking status! 🚫📱"+
+  "\n\nWill YOU get blocked too?"+
+  "\n👇 Check your result:";
+
+  const shareData={
+    title:"Will They Block You? 🎭",
+    text:text,
+    url:window.location.href
+  };
+
+  if(navigator.share){
+
+    navigator.share(shareData);
+
+  }else{
+
+    navigator.clipboard.writeText(
+      text+"\n"+window.location.href
+    );
+
+    alert("Challenge link copied! 🔗");
+
+  }
+}
+
+</script>
+
+</body>
+</html>
