@@ -4,178 +4,120 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Preethi Is Blocking 🎭</title>
 
 <style>
 *{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
+box-sizing:border-box;
+margin:0;
+padding:0;
 }
 
 body{
-    min-height:100vh;
-    font-family:Arial,sans-serif;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding:25px 10px;
-    overflow-x:hidden;
-    color:#66576d;
+min-height:100vh;
+font-family:Arial,sans-serif;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:20px;
+overflow-x:hidden;
+color:#65556d;
 
-    background:
-        radial-gradient(circle at 10% 20%,#ffd4e8 0%,transparent 28%),
-        radial-gradient(circle at 90% 15%,#ddd7ff 0%,transparent 30%),
-        radial-gradient(circle at 80% 85%,#d5f5ff 0%,transparent 30%),
-        radial-gradient(circle at 15% 85%,#d9f8e8 0%,transparent 28%),
-        linear-gradient(
-            135deg,
-            #fff3fa,
-            #f3efff,
-            #eefaff,
-            #effff6,
-            #fff8ed
-        );
+background:
+radial-gradient(circle at 10% 20%,#ffd5e8 0%,transparent 30%),
+radial-gradient(circle at 90% 15%,#dcd6ff 0%,transparent 30%),
+radial-gradient(circle at 80% 85%,#d5f5ff 0%,transparent 30%),
+radial-gradient(circle at 15% 85%,#d8f8e6 0%,transparent 30%),
+linear-gradient(135deg,#fff3fa,#f2efff,#effaff,#effff6,#fff8ed);
 
-    background-size:180% 180%;
-    animation:backgroundMove 14s ease-in-out infinite;
+background-size:180% 180%;
+animation:bgMove 14s ease-in-out infinite;
 }
 
-@keyframes backgroundMove{
-    0%{background-position:0% 50%}
-    25%{background-position:50% 100%}
-    50%{background-position:100% 50%}
-    75%{background-position:50% 0%}
-    100%{background-position:0% 50%}
+@keyframes bgMove{
+0%{background-position:0% 50%}
+25%{background-position:50% 100%}
+50%{background-position:100% 50%}
+75%{background-position:50% 0%}
+100%{background-position:0% 50%}
 }
 
-
-/* SOFT LIGHTS */
-
-.softLight{
-    position:fixed;
-    width:220px;
-    height:220px;
-    border-radius:50%;
-    filter:blur(65px);
-    opacity:.35;
-    pointer-events:none;
-    z-index:0;
+.light{
+position:fixed;
+width:220px;
+height:220px;
+border-radius:50%;
+filter:blur(65px);
+opacity:.35;
+pointer-events:none;
 }
 
-.light1{
-    background:#ffb9d7;
-    top:5%;
-    left:5%;
-    animation:lightOne 8s ease-in-out infinite alternate;
+.l1{
+background:#ffb9d7;
+top:5%;
+left:5%;
+animation:move1 8s ease-in-out infinite alternate;
 }
 
-.light2{
-    background:#bdc8ff;
-    right:5%;
-    bottom:5%;
-    animation:lightTwo 10s ease-in-out infinite alternate;
+.l2{
+background:#bdc8ff;
+right:5%;
+bottom:5%;
+animation:move2 10s ease-in-out infinite alternate;
 }
 
-.light3{
-    background:#b9efd4;
-    top:45%;
-    right:35%;
-    animation:lightThree 9s ease-in-out infinite alternate;
+.l3{
+background:#b9efd4;
+top:45%;
+right:35%;
+animation:move3 9s ease-in-out infinite alternate;
 }
 
-@keyframes lightOne{
-    from{transform:translate(0,0) scale(1)}
-    to{transform:translate(100px,70px) scale(1.25)}
+@keyframes move1{
+from{transform:translate(0,0)}
+to{transform:translate(100px,70px) scale(1.2)}
 }
 
-@keyframes lightTwo{
-    from{transform:translate(0,0) scale(1)}
-    to{transform:translate(-90px,-60px) scale(1.2)}
+@keyframes move2{
+from{transform:translate(0,0)}
+to{transform:translate(-90px,-60px) scale(1.2)}
 }
 
-@keyframes lightThree{
-    from{transform:translate(0,0)}
-    to{transform:translate(-70px,50px)}
+@keyframes move3{
+from{transform:translate(0,0)}
+to{transform:translate(-70px,50px)}
 }
 
-
-/* FLOATING HEARTS */
-
-.floating{
-    position:fixed;
-    bottom:-50px;
-    font-size:25px;
-    z-index:1;
-    pointer-events:none;
-    animation:floatUp 9s linear infinite;
+.float{
+position:fixed;
+bottom:-50px;
+font-size:25px;
+animation:float 9s linear infinite;
+pointer-events:none;
+z-index:1;
 }
 
-.floating:nth-of-type(1){left:10%;animation-delay:0s}
-.floating:nth-of-type(2){left:30%;animation-delay:2s}
-.floating:nth-of-type(3){left:50%;animation-delay:4s}
-.floating:nth-of-type(4){left:70%;animation-delay:1s}
-.floating:nth-of-type(5){left:90%;animation-delay:3s}
+.f1{left:10%;animation-delay:0s}
+.f2{left:30%;animation-delay:2s}
+.f3{left:50%;animation-delay:4s}
+.f4{left:70%;animation-delay:1s}
+.f5{left:90%;animation-delay:3s}
 
-@keyframes floatUp{
-    0%{
-        transform:translateY(0) rotate(0deg);
-        opacity:0;
-    }
-    15%{opacity:.8}
-    100%{
-        transform:translateY(-110vh) rotate(360deg);
-        opacity:0;
-    }
+@keyframes float{
+0%{transform:translateY(0) rotate(0);opacity:0}
+15%{opacity:.8}
+100%{transform:translateY(-110vh) rotate(360deg);opacity:0}
 }
-
-
-/* MAIN CARD */
 
 .card{
-    position:relative;
-    z-index:5;
-    width:94%;
-    max-width:560px;
-    padding:30px 24px;
-    text-align:center;
-
-    background:rgba(255,255,255,.78);
-    backdrop-filter:blur(20px);
-    -webkit-backdrop-filter:blur(20px);
-
-    border:2px solid rgba(255,255,255,.9);
-    border-radius:32px;
-
-    box-shadow:
-        0 25px 70px rgba(150,100,150,.20),
-        0 5px 20px rgba(255,150,200,.15);
-
-    animation:cardIn .8s ease;
-}
-
-@keyframes cardIn{
-    from{
-        opacity:0;
-        transform:translateY(30px) scale(.95);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0) scale(1);
-    }
-}
-
-
-/* CUTE CHARACTERS */
-
-.characters{
-    display:flex;
-    justify-content:center;
-    gap:28px;
-    height:85px;
-    align-items:center;
-}
-
-.ch
+position:relative;
+z-index:5;
+width:95%;
+max-width:540px;
+padding:30px 22px;
+text-align:center;
+background:rgba(255,255,255,.82);
+backdrop-filter:blur(20px);
+border:2px solid white;
+border-radius:30px;
 ```
