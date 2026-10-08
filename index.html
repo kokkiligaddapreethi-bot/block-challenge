@@ -1,136 +1,192 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Will They Block You?</title>
+<title>Will They Block You? 🎭</title>
 
 <style>
-* {
-    box-sizing: border-box;
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
 }
 
-body {
-    margin: 0;
-    min-height: 100vh;
-    font-family: Arial, sans-serif;
-    color: white;
-    background: linear-gradient(135deg, #120018, #28002f, #09000d);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
+body{
+  min-height:100vh;
+  font-family:Arial,sans-serif;
+  color:white;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  background:
+  radial-gradient(circle at 20% 20%,#59136f,transparent 35%),
+  radial-gradient(circle at 80% 80%,#8d1747,transparent 35%),
+  #08030d;
 }
 
-.container {
-    width: 100%;
-    max-width: 500px;
-    text-align: center;
+.container{
+  width:92%;
+  max-width:500px;
+  padding:25px;
 }
 
-h1 {
-    font-size: 32px;
-    margin-bottom: 10px;
+.emoji{
+  font-size:65px;
+  animation:float 2s infinite;
 }
 
-h1 span {
-    color: #ff247f;
+@keyframes float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-10px)}
 }
 
-.subtitle {
-    color: #ddd;
-    line-height: 1.5;
-    margin-bottom: 25px;
+h1{
+  font-size:32px;
+  margin:15px 0;
 }
 
-.card {
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.18);
-    border-radius: 18px;
-    padding: 22px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+.pink{
+  color:#ff4c86;
 }
 
-input {
-    width: 100%;
-    padding: 13px;
-    border: none;
-    border-radius: 10px;
-    font-size: 16px;
-    text-align: center;
-    margin-bottom: 18px;
-    outline: none;
+.subtitle{
+  color:#ddd;
+  line-height:1.6;
+  font-size:17px;
 }
 
-button {
-    width: 100%;
-    padding: 14px;
-    border: none;
-    border-radius: 10px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    background: linear-gradient(90deg, #ff176f, #9c20b5);
-    color: white;
-    transition: 0.2s;
+.start,
+.quiz,
+.result{
+  margin-top:25px;
+  padding:25px 20px;
+  border-radius:22px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.15);
+  backdrop-filter:blur(12px);
 }
 
-button:hover {
-    transform: scale(1.02);
+input{
+  width:100%;
+  padding:15px;
+  border:none;
+  outline:none;
+  border-radius:12px;
+  margin-bottom:15px;
+  text-align:center;
+  font-size:16px;
 }
 
-button:active {
-    transform: scale(0.98);
+button{
+  width:100%;
+  padding:15px;
+  border:none;
+  border-radius:12px;
+  color:white;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+  background:linear-gradient(135deg,#ff1764,#8e24aa);
+  margin-top:10px;
 }
 
-.option {
-    background: rgba(255,255,255,0.1);
-    border: 1px solid rgba(255,255,255,0.2);
-    margin: 10px 0;
-    padding: 14px;
-    border-radius: 10px;
-    cursor: pointer;
-    text-align: left;
+button:hover{
+  transform:scale(1.02);
 }
 
-.option:hover {
-    background: rgba(255,255,255,0.18);
+.quiz,
+.result{
+  display:none;
 }
 
-.question-number {
-    color: #ff5c9d;
-    font-weight: bold;
-    margin-bottom: 10px;
+.questionNumber{
+  color:#ff5a91;
+  font-size:14px;
+  margin-bottom:12px;
 }
 
-.question {
-    font-size: 21px;
-    margin-bottom: 20px;
+.question{
+  font-size:22px;
+  line-height:1.4;
+  margin-bottom:20px;
 }
 
-.result {
-    font-size: 42px;
-    font-weight: bold;
-    color: #ff3d91;
-    margin: 20px 0;
+.option{
+  background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.15);
+  margin:10px 0;
+  padding:14px;
+  border-radius:12px;
+  cursor:pointer;
+  transition:.3s;
 }
 
-.message {
-    font-size: 18px;
-    line-height: 1.5;
-    color: #eee;
+.option:hover{
+  background:rgba(255,71,126,.25);
+  transform:scale(1.02);
 }
 
-.hidden {
-    display: none;
+.option.selected{
+  background:#ff1764;
+  border-color:#ff6b9a;
 }
 
-.small {
-    color: #aaa;
-    font-size: 13px;
-    margin-top: 18px;
+#nextBtn{
+  display:none;
 }
+
+.progress{
+  width:100%;
+  height:7px;
+  background:#29202d;
+  border-radius:10px;
+  margin-bottom:20px;
+  overflow:hidden;
+}
+
+.progressBar{
+  height:100%;
+  width:10%;
+  background:#ff3978;
+  transition:.4s;
+}
+
+.resultEmoji{
+  font-size:70px;
+  margin-bottom:15px;
+}
+
+.result h2{
+  color:#ff4d87;
+  font-size:28px;
+  margin-bottom:15px;
+}
+
+.result p{
+  color:#ddd;
+  line-height:1.7;
+  font-size:17px;
+}
+
+.share{
+  background:linear-gradient(135deg,#13b878,#087d59);
+}
+
+.retry{
+  background:rgba(255,255,255,.12);
+}
+
+.footer{
+  margin-top:20px;
+  color:#777;
+  font-size:12px;
+}
+
 </style>
 </head>
 
@@ -138,76 +194,90 @@ button:active {
 
 <div class="container">
 
-    <!-- HOME -->
-    <div id="home" class="card">
+<div class="emoji">🎭</div>
 
-        <h1>
-            Will They <span>Block</span> You? 🚫
-        </h1>
+<h1>
+Will They <span class="pink">Block</span> You? 🚫📱
+</h1>
 
-        <div class="subtitle">
-            Answer these 10 questions and discover your result 👀<br>
-            Let's see what happens 👇
-        </div>
+<p class="subtitle">
+Answer these 10 questions and discover your result 👀
+<br>
+Let's see what happens 👇
+</p>
 
-        <input
-            type="text"
-            id="name"
-            placeholder="Enter your name"
-            maxlength="30"
-        >
+<!-- START -->
 
-        <button type="button" onclick="startQuiz()">
-            🚀 Start Quiz
-        </button>
+<div class="start" id="start">
 
-        <div class="small">
-            Just for fun 😄
-        </div>
+<input
+type="text"
+id="name"
+placeholder="Enter your name"
+maxlength="30"
+>
 
-    </div>
+<button onclick="startQuiz()">
+🚀 Start Quiz
+</button>
 
-
-    <!-- QUIZ -->
-    <div id="quiz" class="card hidden">
-
-        <div class="question-number" id="questionNumber">
-            Question 1 of 10
-        </div>
-
-        <div class="question" id="questionText"></div>
-
-        <div id="options"></div>
-
-    </div>
+</div>
 
 
-    <!-- RESULT -->
-    <div id="result" class="card hidden">
+<!-- QUIZ -->
 
-        <h1>
-            Your Result 🎯
-        </h1>
+<div class="quiz" id="quiz">
 
-        <div id="resultPercent" class="result">
-            0%
-        </div>
+<div class="progress">
+<div class="progressBar" id="progressBar"></div>
+</div>
 
-        <div id="resultMessage" class="message"></div>
+<div class="questionNumber" id="questionNumber">
+Question 1 of 10
+</div>
 
-        <br>
+<div class="question" id="question">
+Question
+</div>
 
-        <button type="button" onclick="restartQuiz()">
-            🔄 Try Again
-        </button>
+<div id="options"></div>
 
-        <br><br>
+<button id="nextBtn" onclick="nextQuestion()">
+Next ➜
+</button>
 
-        <button type="button" onclick="shareResult()">
-            📤 Share Result
-        </button>
+</div>
 
-    </div>
+
+<!-- RESULT -->
+
+<div class="result" id="result">
+
+<div class="resultEmoji" id="resultEmoji">
+🎉
+</div>
+
+<h2 id="resultTitle">
+Your Result
+</h2>
+
+<p id="resultText">
+Result
+</p>
+
+<button class="share" onclick="shareResult()">
+🔗 Share My Result
+</button>
+
+<button class="retry" onclick="location.reload()">
+🔄 Try Again
+</button>
+
+</div>
+
+<div class="footer">
+Just for fun 😄
+</div>
 
 </div>
 
@@ -216,278 +286,315 @@ button:active {
 
 const questions = [
 
-    {
-        question: "Do you reply late to their messages?",
-        options: [
-            { text: "Always 😭", score: 10 },
-            { text: "Sometimes", score: 5 },
-            { text: "Never ❤️", score: 0 }
-        ]
-    },
+{
+q:"If your friend takes a long time to reply what do you do?",
+options:[
+"Wait patiently 😌",
+"Send another message 😂",
+"Call them 📞",
+"Ignore them too 😎"
+]
+},
 
-    {
-        question: "Do you leave them on seen?",
-        options: [
-            { text: "Yes 😎", score: 10 },
-            { text: "Sometimes", score: 5 },
-            { text: "Never", score: 0 }
-        ]
-    },
+{
+q:"How often do you check if your friend is online?",
+options:[
+"Never",
+"Sometimes 👀",
+"Quite often",
+"Every few minutes 😂"
+]
+},
 
-    {
-        question: "Do you cancel plans at the last minute?",
-        options: [
-            { text: "All the time 😂", score: 10 },
-            { text: "Sometimes", score: 5 },
-            { text: "Never", score: 0 }
-        ]
-    },
+{
+q:"Your friend cancels your plan. What do you do?",
+options:[
+"Understand them",
+"Ask why",
+"Get a little angry 😤",
+"Block them first 😂"
+]
+},
 
-    {
-        question: "Do you talk to their rivals?",
-        options: [
-            { text: "Of course 😏", score: 10 },
-            { text: "Maybe", score: 5 },
-            { text: "Never", score: 0 }
-        ]
-    },
+{
+q:"If your friend posts with someone else, you feel...",
+options:[
+"Happy for them ❤️",
+"Nothing",
+"A little jealous 👀",
+"Very jealous 😂"
+]
+},
 
-    {
-        question: "Do you forget important dates?",
-        options: [
-            { text: "Yes 😭", score: 10 },
-            { text: "Sometimes", score: 5 },
-            { text: "Never", score: 0 }
-        ]
-    },
+{
+q:"Who usually starts your conversations?",
+options:[
+"Mostly me",
+"Mostly them",
+"Both equally",
+"Depends on the day"
+]
+},
 
-    {
-        question: "Do you make them jealous on purpose?",
-        options: [
-            { text: "Definitely 😈", score: 10 },
-            { text: "Sometimes", score: 5 },
-            { text: "Never", score: 0 }
-        ]
-    },
+{
+q:"Your friend leaves you on seen. What is your reaction?",
+options:[
+"No problem",
+"Wait for their reply",
+"Ask why",
+"Mission BLOCK starts 🚫📱"
+]
+},
 
-    {
-        question: "Do you disappear without explaining?",
-        options: [
-            { text: "Yes 👻", score: 10 },
-            { text: "Sometimes", score: 5 },
-            { text: "Never", score: 0 }
-        ]
-    },
+{
+q:"How important is friendship to you?",
+options:[
+"Very important ❤️",
+"Important",
+"Somewhat important",
+"Depends on the person"
+]
+},
 
-    {
-        question: "Do you tease them too much?",
-        options: [
-            { text: "Always 😂", score: 10 },
-            { text: "Sometimes", score: 5 },
-            { text: "Never", score: 0 }
-        ]
-    },
+{
+q:"If your friend tells you a secret, what do you do?",
+options:[
+"Keep it private 🤐",
+"Tell my best friend",
+"Maybe tell someone",
+"Everyone will know 😂"
+]
+},
 
-    {
-        question: "Do you ignore their calls?",
-        options: [
-            { text: "Often 📵", score: 10 },
-            { text: "Sometimes", score: 5 },
-            { text: "Never", score: 0 }
-        ]
-    },
+{
+q:"If you have an argument with your friend, what happens?",
+options:[
+"We talk and solve it",
+"We need some time",
+"We argue more",
+"I say BLOCKED 🚫"
+]
+},
 
-    {
-        question: "Would you choose your friends over them?",
-        options: [
-            { text: "Yes 😎", score: 10 },
-            { text: "Depends", score: 5 },
-            { text: "Never ❤️", score: 0 }
-        ]
-    }
+{
+q:"Finally, would you block your friend if they annoyed you?",
+options:[
+"Never ❤️",
+"Maybe",
+"Probably",
+"Absolutely 😂"
+]
+}
 
 ];
 
 let currentQuestion = 0;
-let totalScore = 0;
+let score = 0;
+let selected = false;
 let userName = "";
 
+function startQuiz(){
 
-/* START QUIZ */
+userName = document.getElementById("name").value.trim();
 
-function startQuiz() {
+if(userName === ""){
+alert("Please enter your name 👀");
+return;
+}
 
-    const nameInput = document.getElementById("name");
+document.getElementById("start").style.display="none";
+document.getElementById("quiz").style.display="block";
 
-    userName = nameInput.value.trim();
+showQuestion();
 
-    if (userName === "") {
-        alert("Please enter your name first 😊");
-        nameInput.focus();
-        return;
-    }
-
-    currentQuestion = 0;
-    totalScore = 0;
-
-    document.getElementById("home").classList.add("hidden");
-    document.getElementById("result").classList.add("hidden");
-    document.getElementById("quiz").classList.remove("hidden");
-
-    showQuestion();
 }
 
 
-/* SHOW QUESTION */
+function showQuestion(){
 
-function showQuestion() {
+selected = false;
 
-    const question = questions[currentQuestion];
+const q = questions[currentQuestion];
 
-    document.getElementById("questionNumber").textContent =
-        "Question " + (currentQuestion + 1) + " of " + questions.length;
+document.getElementById("questionNumber").innerText =
+"Question " + (currentQuestion + 1) + " of 10";
 
-    document.getElementById("questionText").textContent =
-        question.question;
+document.getElementById("question").innerText = q.q;
 
-    const optionsDiv = document.getElementById("options");
+const optionsDiv = document.getElementById("options");
 
-    optionsDiv.innerHTML = "";
+optionsDiv.innerHTML="";
 
-    question.options.forEach(function(option) {
+q.options.forEach((option,index)=>{
 
-        const button = document.createElement("div");
+const div = document.createElement("div");
 
-        button.className = "option";
+div.className="option";
 
-        button.textContent = option.text;
+div.innerText=option;
 
-        button.onclick = function() {
-            selectAnswer(option.score);
-        };
+div.onclick=function(){
 
-        optionsDiv.appendChild(button);
+if(selected) return;
 
-    });
+selected=true;
+
+document.querySelectorAll(".option")
+.forEach(o=>o.classList.remove("selected"));
+
+div.classList.add("selected");
+
+score += index;
+
+document.getElementById("nextBtn").style.display="block";
+
+};
+
+optionsDiv.appendChild(div);
+
+});
+
+document.getElementById("nextBtn").style.display="none";
+
+document.getElementById("progressBar").style.width =
+((currentQuestion + 1) * 10) + "%";
+
 }
 
 
-/* ANSWER */
+function nextQuestion(){
 
-function selectAnswer(score) {
+if(!selected){
 
-    totalScore += score;
+alert("Please choose an answer 👀");
 
-    currentQuestion++;
+return;
 
-    if (currentQuestion < questions.length) {
+}
 
-        showQuestion();
+if(currentQuestion < questions.length - 1){
 
-    } else {
+currentQuestion++;
 
-        showResult();
+showQuestion();
 
-    }
+}else{
+
+showResult();
+
+}
+
 }
 
 
-/* RESULT */
+function showResult(){
 
-function showResult() {
+document.getElementById("quiz").style.display="none";
+document.getElementById("result").style.display="block";
 
-    document.getElementById("quiz").classList.add("hidden");
-    document.getElementById("result").classList.remove("hidden");
+let emoji;
+let title;
+let message;
 
-    const percentage = totalScore;
+if(score <= 8){
 
-    document.getElementById("resultPercent").textContent =
-        percentage + "%";
+emoji="💚😌";
 
-    let message = "";
+title="YOU ARE SAFE!";
 
-    if (percentage <= 20) {
+message=
+"<b>"+userName+"</b>, relax! 😌<br><br>"+
+"You are definitely not getting blocked anytime soon! 🚫❌<br><br>"+
+"Your friendship energy is super chill and positive. 💚✨";
 
-        message =
-            userName +
-            ", you're probably safe! 😇<br><br>" +
-            "The chances of getting blocked are very low.";
+}
 
-    }
-    else if (percentage <= 50) {
+else if(score <= 17){
 
-        message =
-            userName +
-            ", you're walking on thin ice! 😅<br><br>" +
-            "There is a small chance they might block you.";
+emoji="👀😂";
 
-    }
-    else if (percentage <= 80) {
+title="MAYBE...";
 
-        message =
-            userName +
-            ", be careful! 👀<br><br>" +
-            "Your blocking chances are getting pretty high.";
+message=
+"<b>"+userName+"</b>, hmm something looks suspicious 👀<br><br>"+
+"You might be safe today... but don't annoy your friends too much 😂<br><br>"+
+"Your block chances are getting interesting!";
 
-    }
-    else {
+}
 
-        message =
-            userName +
-            ", RUN! 😂🚫<br><br>" +
-            "The block button is probably already open!";
+else if(score <= 26){
 
-    }
+emoji="🚨😭";
 
-    document.getElementById("resultMessage").innerHTML = message;
+title="DANGER ZONE!";
+
+message=
+"<b>"+userName+"</b>, we found some serious warning signs! 🚨<br><br>"+
+"You are getting dangerously close to the BLOCK LIST 🚫📱<br><br>"+
+"Better behave yourself 😂";
+
+}
+
+else{
+
+emoji="💀🚫";
+
+title="YOU MIGHT GET BLOCKED!";
+
+message=
+"<b>"+userName+"</b>... we have bad news 😭<br><br>"+
+"Your BLOCK LEVEL is extremely high! 🚫📱<br><br>"+
+"Maybe send your friend a sorry message before it's too late 😂";
+
+}
+
+document.getElementById("resultEmoji").innerHTML=emoji;
+document.getElementById("resultTitle").innerHTML=title;
+document.getElementById("resultText").innerHTML=message;
+
 }
 
 
-/* RESTART */
+function shareResult(){
 
-function restartQuiz() {
+const text =
+"🎭 I just took the Will They Block You? quiz! 🚫📱"+
+"\n\nMy result: "+
+document.getElementById("resultTitle").innerText+
+"\n\nTry it yourself 👀"+
+"\n"+window.location.href;
 
-    currentQuestion = 0;
-    totalScore = 0;
+if(navigator.share){
 
-    document.getElementById("result").classList.add("hidden");
-    document.getElementById("home").classList.remove("hidden");
+navigator.share({
+title:"Will They Block You? 🎭",
+text:text,
+url:window.location.href
+});
 
-    document.getElementById("name").value = "";
+}else{
+
+navigator.clipboard.writeText(text);
+
+alert("Result link copied! 🔗");
+
 }
 
-
-/* SHARE */
-
-function shareResult() {
-
-    const percent = totalScore;
-
-    const text =
-        "I got " +
-        percent +
-        "% on 'Will They Block You?' 😂🚫";
-
-    if (navigator.share) {
-
-        navigator.share({
-            title: "Will They Block You?",
-            text: text,
-            url: window.location.href
-        });
-
-    } else {
-
-        navigator.clipboard.writeText(
-            text + " " + window.location.href
-        );
-
-        alert("Result link copied! 📋");
-
-    }
 }
 
 </script>
 
 </body>
 </html>
+```
+
+### Ippudu GitHub lo
+
+1. Nee `index.html` open cheyyi
+2. **Edit ✏️** click cheyyi
+3. Existing code motham **Ctrl + A**
+4. Paina code **paste**
+5. **Commit changes** click cheyyi
+6. GitHub Pages automatic ga update avutundi.
+
+**Important:** 10 questions lo answer options ki different scores assign ayyayi, so final result answers batti change avutundi.
