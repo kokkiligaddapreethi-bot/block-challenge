@@ -5,596 +5,177 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Will They Block You? 🎭</title>
+<title>Preethi Is Blocking 🎭</title>
 
 <style>
-
 *{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
 body{
-  min-height:100vh;
-  font-family:Arial,sans-serif;
-  color:white;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  background:
-  radial-gradient(circle at 20% 20%,#59136f,transparent 35%),
-  radial-gradient(circle at 80% 80%,#8d1747,transparent 35%),
-  #08030d;
+    min-height:100vh;
+    font-family:Arial,sans-serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:25px 10px;
+    overflow-x:hidden;
+    color:#66576d;
+
+    background:
+        radial-gradient(circle at 10% 20%,#ffd4e8 0%,transparent 28%),
+        radial-gradient(circle at 90% 15%,#ddd7ff 0%,transparent 30%),
+        radial-gradient(circle at 80% 85%,#d5f5ff 0%,transparent 30%),
+        radial-gradient(circle at 15% 85%,#d9f8e8 0%,transparent 28%),
+        linear-gradient(
+            135deg,
+            #fff3fa,
+            #f3efff,
+            #eefaff,
+            #effff6,
+            #fff8ed
+        );
+
+    background-size:180% 180%;
+    animation:backgroundMove 14s ease-in-out infinite;
 }
 
-.container{
-  width:92%;
-  max-width:500px;
-  padding:25px;
-}
-
-.emoji{
-  font-size:65px;
-  animation:float 2s infinite;
-}
-
-@keyframes float{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-10px)}
-}
-
-h1{
-  font-size:32px;
-  margin:15px 0;
-}
-
-.pink{
-  color:#ff4c86;
-}
-
-.subtitle{
-  color:#ddd;
-  line-height:1.6;
-  font-size:17px;
-}
-
-.start,
-.quiz,
-.result{
-  margin-top:25px;
-  padding:25px 20px;
-  border-radius:22px;
-  background:rgba(255,255,255,.08);
-  border:1px solid rgba(255,255,255,.15);
-  backdrop-filter:blur(12px);
-}
-
-input{
-  width:100%;
-  padding:15px;
-  border:none;
-  outline:none;
-  border-radius:12px;
-  margin-bottom:15px;
-  text-align:center;
-  font-size:16px;
-}
-
-button{
-  width:100%;
-  padding:15px;
-  border:none;
-  border-radius:12px;
-  color:white;
-  font-size:16px;
-  font-weight:bold;
-  cursor:pointer;
-  background:linear-gradient(135deg,#ff1764,#8e24aa);
-  margin-top:10px;
-}
-
-button:hover{
-  transform:scale(1.02);
-}
-
-.quiz,
-.result{
-  display:none;
-}
-
-.questionNumber{
-  color:#ff5a91;
-  font-size:14px;
-  margin-bottom:12px;
-}
-
-.question{
-  font-size:22px;
-  line-height:1.4;
-  margin-bottom:20px;
-}
-
-.option{
-  background:rgba(255,255,255,.1);
-  border:1px solid rgba(255,255,255,.15);
-  margin:10px 0;
-  padding:14px;
-  border-radius:12px;
-  cursor:pointer;
-  transition:.3s;
-}
-
-.option:hover{
-  background:rgba(255,71,126,.25);
-  transform:scale(1.02);
-}
-
-.option.selected{
-  background:#ff1764;
-  border-color:#ff6b9a;
-}
-
-#nextBtn{
-  display:none;
-}
-
-.progress{
-  width:100%;
-  height:7px;
-  background:#29202d;
-  border-radius:10px;
-  margin-bottom:20px;
-  overflow:hidden;
-}
-
-.progressBar{
-  height:100%;
-  width:10%;
-  background:#ff3978;
-  transition:.4s;
-}
-
-.resultEmoji{
-  font-size:70px;
-  margin-bottom:15px;
-}
-
-.result h2{
-  color:#ff4d87;
-  font-size:28px;
-  margin-bottom:15px;
-}
-
-.result p{
-  color:#ddd;
-  line-height:1.7;
-  font-size:17px;
-}
-
-.share{
-  background:linear-gradient(135deg,#13b878,#087d59);
-}
-
-.retry{
-  background:rgba(255,255,255,.12);
-}
-
-.footer{
-  margin-top:20px;
-  color:#777;
-  font-size:12px;
-}
-
-</style>
-</head>
-
-<body>
-
-<div class="container">
-
-<div class="emoji">🎭</div>
-
-<h1>
-Will They <span class="pink">Block</span> You? 🚫📱
-</h1>
-
-<p class="subtitle">
-Answer these 10 questions and discover your result 👀
-<br>
-Let's see what happens 👇
-</p>
-
-<!-- START -->
-
-<div class="start" id="start">
-
-<input
-type="text"
-id="name"
-placeholder="Enter your name"
-maxlength="30"
->
-
-<button onclick="startQuiz()">
-🚀 Start Quiz
-</button>
-
-</div>
-
-
-<!-- QUIZ -->
-
-<div class="quiz" id="quiz">
-
-<div class="progress">
-<div class="progressBar" id="progressBar"></div>
-</div>
-
-<div class="questionNumber" id="questionNumber">
-Question 1 of 10
-</div>
-
-<div class="question" id="question">
-Question
-</div>
-
-<div id="options"></div>
-
-<button id="nextBtn" onclick="nextQuestion()">
-Next ➜
-</button>
-
-</div>
-
-
-<!-- RESULT -->
-
-<div class="result" id="result">
-
-<div class="resultEmoji" id="resultEmoji">
-🎉
-</div>
-
-<h2 id="resultTitle">
-Your Result
-</h2>
-
-<p id="resultText">
-Result
-</p>
-
-<button class="share" onclick="shareResult()">
-🔗 Share My Result
-</button>
-
-<button class="retry" onclick="location.reload()">
-🔄 Try Again
-</button>
-
-</div>
-
-<div class="footer">
-Just for fun 😄
-</div>
-
-</div>
-
-
-<script>
-
-const questions = [
-
-{
-q:"If your friend takes a long time to reply what do you do?",
-options:[
-"Wait patiently 😌",
-"Send another message 😂",
-"Call them 📞",
-"Ignore them too 😎"
-]
-},
-
-{
-q:"How often do you check if your friend is online?",
-options:[
-"Never",
-"Sometimes 👀",
-"Quite often",
-"Every few minutes 😂"
-]
-},
-
-{
-q:"Your friend cancels your plan. What do you do?",
-options:[
-"Understand them",
-"Ask why",
-"Get a little angry 😤",
-"Block them first 😂"
-]
-},
-
-{
-q:"If your friend posts with someone else, you feel...",
-options:[
-"Happy for them ❤️",
-"Nothing",
-"A little jealous 👀",
-"Very jealous 😂"
-]
-},
-
-{
-q:"Who usually starts your conversations?",
-options:[
-"Mostly me",
-"Mostly them",
-"Both equally",
-"Depends on the day"
-]
-},
-
-{
-q:"Your friend leaves you on seen. What is your reaction?",
-options:[
-"No problem",
-"Wait for their reply",
-"Ask why",
-"Mission BLOCK starts 🚫📱"
-]
-},
-
-{
-q:"How important is friendship to you?",
-options:[
-"Very important ❤️",
-"Important",
-"Somewhat important",
-"Depends on the person"
-]
-},
-
-{
-q:"If your friend tells you a secret, what do you do?",
-options:[
-"Keep it private 🤐",
-"Tell my best friend",
-"Maybe tell someone",
-"Everyone will know 😂"
-]
-},
-
-{
-q:"If you have an argument with your friend, what happens?",
-options:[
-"We talk and solve it",
-"We need some time",
-"We argue more",
-"I say BLOCKED 🚫"
-]
-},
-
-{
-q:"Finally, would you block your friend if they annoyed you?",
-options:[
-"Never ❤️",
-"Maybe",
-"Probably",
-"Absolutely 😂"
-]
-}
-
-];
-
-let currentQuestion = 0;
-let score = 0;
-let selected = false;
-let userName = "";
-
-function startQuiz(){
-
-userName = document.getElementById("name").value.trim();
-
-if(userName === ""){
-alert("Please enter your name 👀");
-return;
-}
-
-document.getElementById("start").style.display="none";
-document.getElementById("quiz").style.display="block";
-
-showQuestion();
-
+@keyframes backgroundMove{
+    0%{background-position:0% 50%}
+    25%{background-position:50% 100%}
+    50%{background-position:100% 50%}
+    75%{background-position:50% 0%}
+    100%{background-position:0% 50%}
 }
 
 
-function showQuestion(){
+/* SOFT LIGHTS */
 
-selected = false;
+.softLight{
+    position:fixed;
+    width:220px;
+    height:220px;
+    border-radius:50%;
+    filter:blur(65px);
+    opacity:.35;
+    pointer-events:none;
+    z-index:0;
+}
 
-const q = questions[currentQuestion];
+.light1{
+    background:#ffb9d7;
+    top:5%;
+    left:5%;
+    animation:lightOne 8s ease-in-out infinite alternate;
+}
 
-document.getElementById("questionNumber").innerText =
-"Question " + (currentQuestion + 1) + " of 10";
+.light2{
+    background:#bdc8ff;
+    right:5%;
+    bottom:5%;
+    animation:lightTwo 10s ease-in-out infinite alternate;
+}
 
-document.getElementById("question").innerText = q.q;
+.light3{
+    background:#b9efd4;
+    top:45%;
+    right:35%;
+    animation:lightThree 9s ease-in-out infinite alternate;
+}
 
-const optionsDiv = document.getElementById("options");
+@keyframes lightOne{
+    from{transform:translate(0,0) scale(1)}
+    to{transform:translate(100px,70px) scale(1.25)}
+}
 
-optionsDiv.innerHTML="";
+@keyframes lightTwo{
+    from{transform:translate(0,0) scale(1)}
+    to{transform:translate(-90px,-60px) scale(1.2)}
+}
 
-q.options.forEach((option,index)=>{
-
-const div = document.createElement("div");
-
-div.className="option";
-
-div.innerText=option;
-
-div.onclick=function(){
-
-if(selected) return;
-
-selected=true;
-
-document.querySelectorAll(".option")
-.forEach(o=>o.classList.remove("selected"));
-
-div.classList.add("selected");
-
-score += index;
-
-document.getElementById("nextBtn").style.display="block";
-
-};
-
-optionsDiv.appendChild(div);
-
-});
-
-document.getElementById("nextBtn").style.display="none";
-
-document.getElementById("progressBar").style.width =
-((currentQuestion + 1) * 10) + "%";
-
+@keyframes lightThree{
+    from{transform:translate(0,0)}
+    to{transform:translate(-70px,50px)}
 }
 
 
-function nextQuestion(){
+/* FLOATING HEARTS */
 
-if(!selected){
-
-alert("Please choose an answer 👀");
-
-return;
-
+.floating{
+    position:fixed;
+    bottom:-50px;
+    font-size:25px;
+    z-index:1;
+    pointer-events:none;
+    animation:floatUp 9s linear infinite;
 }
 
-if(currentQuestion < questions.length - 1){
+.floating:nth-of-type(1){left:10%;animation-delay:0s}
+.floating:nth-of-type(2){left:30%;animation-delay:2s}
+.floating:nth-of-type(3){left:50%;animation-delay:4s}
+.floating:nth-of-type(4){left:70%;animation-delay:1s}
+.floating:nth-of-type(5){left:90%;animation-delay:3s}
 
-currentQuestion++;
-
-showQuestion();
-
-}else{
-
-showResult();
-
-}
-
-}
-
-
-function showResult(){
-
-document.getElementById("quiz").style.display="none";
-document.getElementById("result").style.display="block";
-
-let emoji;
-let title;
-let message;
-
-if(score <= 8){
-
-emoji="💚😌";
-
-title="YOU ARE SAFE!";
-
-message=
-"<b>"+userName+"</b>, relax! 😌<br><br>"+
-"You are definitely not getting blocked anytime soon! 🚫❌<br><br>"+
-"Your friendship energy is super chill and positive. 💚✨";
-
-}
-
-else if(score <= 17){
-
-emoji="👀😂";
-
-title="MAYBE...";
-
-message=
-"<b>"+userName+"</b>, hmm something looks suspicious 👀<br><br>"+
-"You might be safe today... but don't annoy your friends too much 😂<br><br>"+
-"Your block chances are getting interesting!";
-
-}
-
-else if(score <= 26){
-
-emoji="🚨😭";
-
-title="DANGER ZONE!";
-
-message=
-"<b>"+userName+"</b>, we found some serious warning signs! 🚨<br><br>"+
-"You are getting dangerously close to the BLOCK LIST 🚫📱<br><br>"+
-"Better behave yourself 😂";
-
-}
-
-else{
-
-emoji="💀🚫";
-
-title="YOU MIGHT GET BLOCKED!";
-
-message=
-"<b>"+userName+"</b>... we have bad news 😭<br><br>"+
-"Your BLOCK LEVEL is extremely high! 🚫📱<br><br>"+
-"Maybe send your friend a sorry message before it's too late 😂";
-
-}
-
-document.getElementById("resultEmoji").innerHTML=emoji;
-document.getElementById("resultTitle").innerHTML=title;
-document.getElementById("resultText").innerHTML=message;
-
+@keyframes floatUp{
+    0%{
+        transform:translateY(0) rotate(0deg);
+        opacity:0;
+    }
+    15%{opacity:.8}
+    100%{
+        transform:translateY(-110vh) rotate(360deg);
+        opacity:0;
+    }
 }
 
 
-function shareResult(){
+/* MAIN CARD */
 
-const text =
-"🎭 I just took the Will They Block You? quiz! 🚫📱"+
-"\n\nMy result: "+
-document.getElementById("resultTitle").innerText+
-"\n\nTry it yourself 👀"+
-"\n"+window.location.href;
+.card{
+    position:relative;
+    z-index:5;
+    width:94%;
+    max-width:560px;
+    padding:30px 24px;
+    text-align:center;
 
-if(navigator.share){
+    background:rgba(255,255,255,.78);
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
 
-navigator.share({
-title:"Will They Block You? 🎭",
-text:text,
-url:window.location.href
-});
+    border:2px solid rgba(255,255,255,.9);
+    border-radius:32px;
 
-}else{
+    box-shadow:
+        0 25px 70px rgba(150,100,150,.20),
+        0 5px 20px rgba(255,150,200,.15);
 
-navigator.clipboard.writeText(text);
-
-alert("Result link copied! 🔗");
-
+    animation:cardIn .8s ease;
 }
 
+@keyframes cardIn{
+    from{
+        opacity:0;
+        transform:translateY(30px) scale(.95);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
 }
 
-</script>
 
-</body>
-</html>
+/* CUTE CHARACTERS */
+
+.characters{
+    display:flex;
+    justify-content:center;
+    gap:28px;
+    height:85px;
+    align-items:center;
+}
+
+.ch
 ```
-
-### Ippudu GitHub lo
-
-1. Nee `index.html` open cheyyi
-2. **Edit ✏️** click cheyyi
-3. Existing code motham **Ctrl + A**
-4. Paina code **paste**
-5. **Commit changes** click cheyyi
-6. GitHub Pages automatic ga update avutundi.
-
-**Important:** 10 questions lo answer options ki different scores assign ayyayi, so final result answers batti change avutundi.
