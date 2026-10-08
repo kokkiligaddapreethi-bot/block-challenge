@@ -4,120 +4,479 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Preethi Is Blocking 🎭</title>
+<title>Our Love Universe 💖</title>
 
 <style>
-*{
-box-sizing:border-box;
-margin:0;
-padding:0;
-}
-
+*{box-sizing:border-box}
+:root{--pink:#ff4fa3;--purple:#a66cff}
 body{
-min-height:100vh;
-font-family:Arial,sans-serif;
-display:flex;
-justify-content:center;
-align-items:center;
-padding:20px;
-overflow-x:hidden;
-color:#65556d;
-
-background:
-radial-gradient(circle at 10% 20%,#ffd5e8 0%,transparent 30%),
-radial-gradient(circle at 90% 15%,#dcd6ff 0%,transparent 30%),
-radial-gradient(circle at 80% 85%,#d5f5ff 0%,transparent 30%),
-radial-gradient(circle at 15% 85%,#d8f8e6 0%,transparent 30%),
-linear-gradient(135deg,#fff3fa,#f2efff,#effaff,#effff6,#fff8ed);
-
-background-size:180% 180%;
-animation:bgMove 14s ease-in-out infinite;
+ margin:0;font-family:'Segoe UI',sans-serif;text-align:center;
+ color:#fff;min-height:100vh;overflow-x:hidden;
+ background:radial-gradient(circle at top,#471653,#160d2c 55%,#070b19);
+ transition:.5s
 }
-
-@keyframes bgMove{
-0%{background-position:0% 50%}
-25%{background-position:50% 100%}
-50%{background-position:100% 50%}
-75%{background-position:50% 0%}
-100%{background-position:0% 50%}
+body.light{
+ background:linear-gradient(135deg,#ffe1ef,#e9ddff,#dff7ff);
+ color:#501747
 }
-
-.light{
-position:fixed;
-width:220px;
-height:220px;
-border-radius:50%;
-filter:blur(65px);
-opacity:.35;
-pointer-events:none;
+header{padding:45px 15px 20px}
+h1{
+ font-size:clamp(32px,7vw,58px);
+ background:linear-gradient(90deg,#ff8dc9,#d1a0ff,#fff);
+ color:transparent;background-clip:text
 }
-
-.l1{
-background:#ffb9d7;
-top:5%;
-left:5%;
-animation:move1 8s ease-in-out infinite alternate;
-}
-
-.l2{
-background:#bdc8ff;
-right:5%;
-bottom:5%;
-animation:move2 10s ease-in-out infinite alternate;
-}
-
-.l3{
-background:#b9efd4;
-top:45%;
-right:35%;
-animation:move3 9s ease-in-out infinite alternate;
-}
-
-@keyframes move1{
-from{transform:translate(0,0)}
-to{transform:translate(100px,70px) scale(1.2)}
-}
-
-@keyframes move2{
-from{transform:translate(0,0)}
-to{transform:translate(-90px,-60px) scale(1.2)}
-}
-
-@keyframes move3{
-from{transform:translate(0,0)}
-to{transform:translate(-70px,50px)}
-}
-
-.float{
-position:fixed;
-bottom:-50px;
-font-size:25px;
-animation:float 9s linear infinite;
-pointer-events:none;
-z-index:1;
-}
-
-.f1{left:10%;animation-delay:0s}
-.f2{left:30%;animation-delay:2s}
-.f3{left:50%;animation-delay:4s}
-.f4{left:70%;animation-delay:1s}
-.f5{left:90%;animation-delay:3s}
-
-@keyframes float{
-0%{transform:translateY(0) rotate(0);opacity:0}
-15%{opacity:.8}
-100%{transform:translateY(-110vh) rotate(360deg);opacity:0}
-}
-
+h2{color:#ff9aca}
+body.light h2{color:#b52d82}
+p{line-height:1.8}
 .card{
-position:relative;
-z-index:5;
-width:95%;
-max-width:540px;
-padding:30px 22px;
-text-align:center;
-background:rgba(255,255,255,.82);
-backdrop-filter:blur(20px);
-border:2px solid white;
-border-radius:30px;
+ width:min(720px,92%);margin:22px auto;padding:25px 18px;
+ background:#ffffff0c;border:1px solid #ff8aca66;
+ border-radius:25px;backdrop-filter:blur(12px);
+ box-shadow:0 0 30px #e54da51c
+}
+button{
+ border:0;border-radius:25px;padding:12px 19px;margin:6px;
+ color:white;font-size:15px;font-weight:600;cursor:pointer;
+ background:linear-gradient(100deg,#ff4fa3,#a66cff);
+ transition:.25s
+}
+button:hover{transform:scale(1.06);box-shadow:0 0 18px #ff4fa388}
+input{
+ padding:12px;margin:6px;width:min(42%,220px);
+ border:1px solid #ff8aca;border-radius:12px;
+ background:#ffffff16;color:inherit;font-size:15px
+}
+input::placeholder{color:#cbb5d7}
+body.light input::placeholder{color:#855d7c}
+#typing{font-size:clamp(20px,4vw,28px);min-height:90px;line-height:1.7}
+.cursor{animation:blink .7s infinite}
+@keyframes blink{50%{opacity:0}}
+.heart{
+ position:fixed;bottom:-40px;pointer-events:none;z-index:-1;
+ animation:rise linear forwards
+}
+@keyframes rise{to{transform:translateY(-115vh) rotate(360deg);opacity:0}}
+#letter,#quiz,#proposal{display:none}
+.option{
+ display:block;width:90%;max-width:420px;margin:10px auto;
+ background:#ffffff12;border:1px solid #ff9aca
+}
+.option.selected{background:#b14a99}
+#quizResult{line-height:1.8;text-align:left}
+#report{text-align:left;line-height:1.9;overflow-wrap:anywhere}
+#letter{line-height:1.9}
+footer{padding:30px;color:#ffb6d9}
+.bar{height:7px;max-width:300px;margin:15px auto;background:#ffffff25;border-radius:9px}
+#progress{height:100%;width:0;background:#ff75ba;border-radius:9px}
+#characters{font-size:65px;letter-spacing:8px}
+@media(max-width:480px){
+ .card{padding:20px 12px}
+ input{width:90%;max-width:300px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+ <div style="font-size:38px">🌙 💖 ✨</div>
+ <p>WELCOME TO YOUR LITTLE LOVE UNIVERSE</p>
+ <h1>Love Beyond Words 💕</h1>
+ <p>Every heart has a story. Let's discover yours. 🫶</p>
+ <button onclick="toggleTheme()">🌗 Light / Dark Mode</button>
+</header>
+
+<section class="card">
+ <h2>💌 Welcome, My Favourite Person!</h2>
+ <p>Enter your name to unlock your special surprise.</p>
+ <input id="visitor" maxlength="35" placeholder="Enter your name 💗">
+ <button onclick="welcome()">✨ Welcome Me</button>
+ <h2 id="hello"></h2>
+ <div id="characters">🐼 💗 🐼</div>
+ <p id="welcomeMessage">A little magic is waiting for you...</p>
+</section>
+
+<section class="card">
+ <h2>⌨️ If My Heart Could Type...</h2>
+ <div id="typing"></div>
+ <div class="bar"><div id="progress"></div></div>
+ <button onclick="nextMessage()">💖 Next Message</button>
+</section>
+
+<section class="card">
+ <h2>💑 Our Personal Love Story</h2>
+ <input id="person1" maxlength="35" placeholder="Your name 💗">
+ <input id="person2" maxlength="35" placeholder="Their name 💙">
+ <br>
+ <button onclick="makeStory()">💞 Create Our Story</button>
+ <h2 id="storyTitle"></h2>
+ <p id="story"></p>
+</section>
+
+<section class="card">
+ <h2>💍 One Special Question</h2>
+ <p>Would you like to create beautiful memories together? 🥹</p>
+ <button onclick="proposalYes()">YES! 💖</button>
+ <button onclick="proposalMaybe()">Let me think 🙈</button>
+ <div id="proposal"></div>
+</section>
+
+<section class="card">
+ <h2>🔐 Secret Love Letter</h2>
+ <p>Some feelings are too special for ordinary words...</p>
+ <button onclick="toggleLetter()">💌 Open My Heart</button>
+ <div id="letter">
+  <h2>Dear <span id="letterTo">My Favourite Person</span>, 💗</h2>
+  <p>You make ordinary moments feel extraordinary.</p>
+  <p>If my heart could save one notification forever, it would be your name. 📱💖</p>
+  <p>I hope your days are filled with smiles, your dreams with courage, and your life with people who appreciate your beautiful heart.</p>
+  <p>Our story doesn't have to be perfect. It just has to be honest, kind, and full of beautiful memories. 🫶</p>
+  <h2>You + Me = A Beautiful Possibility ♾️</h2>
+  <p>Sending you a universe full of love. 🌌💗</p>
+ </div>
+</section>
+
+<section class="card">
+ <h2>🎮 My Favourite Things — Love Quiz</h2>
+ <p>How well do you know me? Answer all 10 questions! 💖</p>
+ <button onclick="startQuiz()">🚀 Start Quiz</button>
+
+ <div id="quiz">
+  <p id="questionCount"></p>
+  <h2 id="question"></h2>
+  <div id="options"></div>
+  <button id="nextBtn" onclick="nextQuestion()">Next ➜</button>
+ </div>
+
+ <div id="quizResult"></div>
+ <div id="report"></div>
+
+ <button id="shareBtn" style="display:none" onclick="shareResult()">📲 Share Result</button>
+ <button id="retryBtn" style="display:none" onclick="startQuiz()">🔄 Play Again</button>
+</section>
+
+<section class="card">
+ <h2>🎆 Heart Explosion</h2>
+ <p>Ready for a sky full of love?</p>
+ <button onclick="explodeHearts()">💗 Release the Magic</button>
+ <h2 id="finalMessage"></h2>
+</section>
+
+<footer>
+ Made with 💗, imagination & a little bit of magic ✨
+ <p>LOVE IS NOT A COMPETITION. KINDNESS ALWAYS WINS. 🫶</p>
+</footer>
+
+<script>
+const messages=[
+ "You are someone's reason to smile today. 💖",
+ "The smallest acts of kindness can become the biggest memories. 🌸",
+ "If my heart could type, it would send a thousand hugs. 🫂",
+ "You deserve love that feels safe, honest and kind. 💗",
+ "Some people turn ordinary days into beautiful stories. ✨",
+ "Your smile is a little sunshine on a cloudy day. ☀️",
+ "The best relationships grow through trust and understanding. 🫶",
+ "Maybe the most beautiful chapter is still waiting to begin. 📖"
+];
+
+let msgIndex=0,typingTimer;
+
+function typeText(text){
+ clearInterval(typingTimer);
+ const el=document.getElementById("typing");
+ el.textContent="";
+ const cursor=document.createElement("span");
+ cursor.className="cursor";
+ cursor.textContent="|";
+ el.appendChild(cursor);
+ let i=0;
+ document.getElementById("progress").style.width="0%";
+
+ typingTimer=setInterval(()=>{
+  if(i<text.length){
+   cursor.before(document.createTextNode(text[i++]));
+   document.getElementById("progress").style.width=(i/text.length*100)+"%";
+  }else{
+   clearInterval(typingTimer);
+   cursor.remove();
+  }
+ },45);
+}
+
+function nextMessage(){
+ typeText(messages[msgIndex]);
+ msgIndex=(msgIndex+1)%messages.length;
+}
+nextMessage();
+
+function toggleTheme(){
+ document.body.classList.toggle("light");
+}
+
+function welcome(){
+ const name=document.getElementById("visitor").value.trim();
+ if(!name){
+  document.getElementById("hello").textContent="Please enter your name 💗";
+  return;
+ }
+ document.getElementById("hello").textContent="Hello, "+name+"! 💖";
+ document.getElementById("welcomeMessage").textContent=
+ "Welcome to a little universe made to bring you smiles, "+name+". ✨";
+ burst(25);
+}
+
+function makeStory(){
+ const a=document.getElementById("person1").value.trim();
+ const b=document.getElementById("person2").value.trim();
+
+ if(!a||!b){
+  document.getElementById("story").textContent="Enter both names first! 💗";
+  return;
+ }
+
+ document.getElementById("storyTitle").textContent=a+" 💗 "+b;
+ document.getElementById("story").textContent=
+ "Two unique people, two beautiful journeys, and a chance to create wonderful memories together. May your story always have honesty, laughter and kindness. ✨";
+ document.getElementById("letterTo").textContent=b;
+ burst(30);
+}
+
+function proposalYes(){
+ const p=document.getElementById("proposal");
+ p.style.display="block";
+ p.textContent="Yay! 💖 May every connection in your life grow with respect, trust, laughter and kindness. 🫶";
+ burst(55);
+}
+
+function proposalMaybe(){
+ const p=document.getElementById("proposal");
+ p.style.display="block";
+ p.textContent="No pressure! 🫶 Take your time. The best decisions come from the heart.";
+}
+
+function toggleLetter(){
+ const l=document.getElementById("letter");
+ l.style.display=l.style.display==="block"?"none":"block";
+ if(l.style.display==="block")burst(25);
+}
+
+function floatHeart(){
+ const h=document.createElement("span");
+ h.className="heart";
+ h.textContent=["💗","💖","💕","✨","🦋","💘","🌸"][Math.floor(Math.random()*7)];
+ h.style.left=Math.random()*100+"vw";
+ h.style.fontSize=(16+Math.random()*24)+"px";
+ const duration=5+Math.random()*5;
+ h.style.animationDuration=duration+"s";
+ document.body.appendChild(h);
+ setTimeout(()=>h.remove(),duration*1000);
+}
+setInterval(floatHeart,450);
+
+function burst(count){
+ for(let i=0;i<count;i++){
+  const h=document.createElement("span");
+  h.className="heart";
+  h.textContent=["💖","💗","✨","💕","💘"][i%5];
+  h.style.left=(20+Math.random()*60)+"vw";
+  h.style.bottom=(10+Math.random()*50)+"vh";
+  h.style.animationDuration=(2+Math.random()*3)+"s";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),5000);
+ }
+}
+
+function explodeHearts(){
+ burst(90);
+ document.getElementById("finalMessage").textContent=
+ "A universe full of love! 💖🌌♾️";
+}
+
+/* PERSONAL LOVE QUIZ: 10 QUESTIONS */
+const questions=[
+ {
+  q:"🎨 Which is my favourite colour?",
+  o:["Pink 🩷","Green 💚","Blue 💙","Black 🖤"],
+  a:1
+ },
+ {
+  q:"🥟 Which food do I love the most?",
+  o:["Pizza 🍕","Pani Puri 🥟","Biryani 🍛","Ice Cream 🍦"],
+  a:1
+ },
+ {
+  q:"🏃 Which is my favourite game?",
+  o:["Cricket 🏏","Kho Kho 🏃","Badminton 🏸","Football ⚽"],
+  a:1
+ },
+ {
+  q:"🎧 Which type of songs do I enjoy?",
+  o:["Melody 🎶","Mass songs 🔥","Sad songs 🥹","Love songs 💕"],
+  a:1
+ },
+ {
+  q:"🥤 Which is my favourite drink?",
+  o:["Coffee ☕","Thums Up 🥤","Juice 🧃","Milkshake 🥛"],
+  a:1
+ },
+ {
+  q:"🏝️ Which is my dream destination?",
+  o:["Paris 🗼","Maldives 🏝️","London 🎡","Manali 🏔️"],
+  a:1
+ },
+ {
+  q:"❤️ What makes me happiest?",
+  o:[
+   "Shopping 🛍️",
+   "Spending time with you 🫶",
+   "Sleeping 😴",
+   "Watching movies 🎬"
+  ],
+  a:1
+ },
+ {
+  q:"🌙 What is my perfect date?",
+  o:[
+   "Candlelight dinner 🕯️",
+   "Night-time ride 🌙",
+   "Beach walk 🏖️",
+   "Movie date 🎥"
+  ],
+  a:1
+ },
+ {
+  q:"🤝 What matters most in a relationship?",
+  o:[
+   "Money 💰",
+   "Trust and honesty 🤝",
+   "Gifts 🎁",
+   "Popularity 🌟"
+  ],
+  a:1
+ },
+ {
+  q:"💗 Which moments do I love most?",
+  o:[
+   "Laughing and talking together 😂❤️",
+   "Taking selfies 🤳",
+   "Going shopping 🛍️",
+   "Watching reels 📱"
+  ],
+  a:0
+ }
+];
+
+let qi=0,answers=[],selected=null;
+
+function startQuiz(){
+ qi=0;
+ answers=[];
+ selected=null;
+
+ document.getElementById("quiz").style.display="block";
+ document.getElementById("quizResult").textContent="";
+ document.getElementById("report").textContent="";
+ document.getElementById("retryBtn").style.display="none";
+ document.getElementById("shareBtn").style.display="none";
+
+ showQuestion();
+}
+
+function showQuestion(){
+ selected=null;
+ const q=questions[qi];
+
+ document.getElementById("questionCount").textContent=
+ "Question "+(qi+1)+" of "+questions.length;
+
+ document.getElementById("question").textContent=q.q;
+
+ const box=document.getElementById("options");
+ box.textContent="";
+
+ q.o.forEach((option,i)=>{
+  const btn=document.createElement("button");
+  btn.className="option";
+  btn.textContent=option;
+
+  btn.onclick=()=>{
+   selected=i;
+   [...box.children].forEach((b,j)=>{
+    b.classList.toggle("selected",j===i);
+   });
+  };
+
+  box.appendChild(btn);
+ });
+
+ document.getElementById("nextBtn").textContent=
+ qi===questions.length-1?"See My Result 💖":"Next ➜";
+}
+
+function nextQuestion(){
+ if(selected===null){
+  alert("Please choose an answer first! 💗");
+  return;
+ }
+
+ answers.push(selected);
+
+ if(qi<questions.length-1){
+  qi++;
+  showQuestion();
+ }else{
+  finishQuiz();
+ }
+}
+
+function finishQuiz(){
+ document.getElementById("quiz").style.display="none";
+
+ let score=0;
+ questions.forEach((q,i)=>{
+  if(answers[i]===q.a)score++;
+ });
+
+ document.getElementById("quizResult").textContent=
+ "💖 Your score: "+score+"/"+questions.length+
+ " ("+(score*10)+"%)";
+
+ const report=document.getElementById("report");
+ report.textContent="";
+
+ questions.forEach((q,i)=>{
+  const p=document.createElement("p");
+  p.textContent=(i+1)+". "+q.q+" — "+
+   (answers[i]===q.a?"✅ Correct":"❌ Not quite")+
+   ". Correct answer: "+q.o[q.a];
+  report.appendChild(p);
+ });
+
+ document.getElementById("retryBtn").style.display="inline-block";
+ document.getElementById("shareBtn").style.display="inline-block";
+
+ burst(35);
+}
+
+function shareResult(){
+ const result=document.getElementById("quizResult").textContent;
+ const text="I completed the Love & Friendship Quiz! "+result+" 💖";
+
+ if(navigator.share){
+  navigator.share({
+   title:"My Love Quiz Result",
+   text:text
+  }).catch(()=>{});
+ }else if(navigator.clipboard){
+  navigator.clipboard.writeText(text)
+   .then(()=>alert("Result copied! Share it with your friends 💗"))
+   .catch(()=>prompt("Copy your result:",text));
+ }else{
+  prompt("Copy your result:",text);
+ }
+}
+</script>
+
+</body>
+</html>
 ```
